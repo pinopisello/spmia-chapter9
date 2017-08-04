@@ -1,15 +1,3 @@
-spring:
-  application:
-    name: zuulservice
-  profiles:
-    active:
-      default
-  zipkin:
-     baseUrl:  localhost:9411
-  cloud:
-    config:
-      enabled: true
-
 server:
   port: 5555
 
