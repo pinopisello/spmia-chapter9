@@ -16,6 +16,7 @@ import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -54,6 +55,8 @@ public class Application {
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
         template.setConnectionFactory(jedisConnectionFactory());
+        template.setKeySerializer(new StringRedisSerializer());//altrimenti key serializer defaulta a JdkSerializationRedisSerializer il quale serializza "organization" in "organization".objectOutputStream.writeObject(object)
+        template.setHashKeySerializer(new StringRedisSerializer());
         return template;
     }
 
