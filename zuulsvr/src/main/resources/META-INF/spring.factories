@@ -1,0 +1,5 @@
+#Definizione di Beans che vanno nell application context per proxy EurekaDiscoveryClient
+org.springframework.boot.autoconfigure.EnableAutoConfiguration = SpringAppContextConfig
+
+#Definizione di Beans che vanno nel bootstrap context
+org.springframework.cloud.bootstrap.BootstrapConfiguration = SpringBootContextConfig

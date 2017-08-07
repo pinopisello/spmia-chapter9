@@ -1,0 +1,9 @@
+Impementa Zipkin server usato da zuul, organization_service e licensing_service per inviare traces.
+
+
+
+1)pom.xml   <artifactId>zipkin-autoconfigure-ui</artifactId>  artifactId>zipkin-server</artifactId>  
+
+
+2)ZipkinServerApplication.java aggiungere @EnableZipkinServer
+

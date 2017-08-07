@@ -1,0 +1,36 @@
+Organization service che usa rabbit e redis come chapter 8 ma con Zipkin enabled logging e spring sleuth .
+
+Il traceid iniziale e settato da Zuulserver e propagato tramite header "X-B3-TraceId"
+
+
+
+1)pom.xml  aggiubgere <artifactId>spring-cloud-starter-sleuth</artifactId> e  <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+
+
+2)application.yml  configurare :
+spring:
+   sleuth:
+      sampler:
+         percentage:  1
+
+zipkin:
+    baseUrl:  http://localhost:9411
+    
+    
+    
+     
+    
+Ora ogno logger.debug/warn/etc avara' un formato tipo:
+
+2017-08-07 10:04:22.645 DEBUG [licensingservice,7793e6594d71794b,ffcbc1f583f82bc6,true] 35461 --- [nio-8081-exec-4] c.t.l.c.OrganizationRestTemplateClient   : I have successfully retrieved an organization 442adb6e-fa58-47f3-9ca2-ed1fecdfe86c from the redis cache: com.thoughtmechanix.licenses.model.Organization@428f93f4
+
+ed inviera' a  zipkin server [http://localhost:9411] dettagli come il tempo che il contenente logger impiegato per completare.
+
+Il traceid iniziale e settato da Zuulserver e' propagato a tutti i servizi downstream tramite l header X-B3-TraceId.
+
+
+
+Le tracce inviate a zipkin si possono analizzare col browser a http://localhost:9411
+
+
+
