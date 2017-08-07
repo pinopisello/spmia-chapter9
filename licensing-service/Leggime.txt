@@ -17,7 +17,19 @@ zipkin:
     baseUrl:  http://localhost:9411
     
     
+3)Application.java aggiungi :
+
+   @Bean
+    public Sampler defaultSampler() {
+        return new AlwaysSampler();
+    }
     
+per forzare l invio di TUTTI in loggers a Ziplink.Altrimenti solo il 10% sara inviato.
+Alternativamente spring.sleuth.sampler.percentage puo essere usato allo stesso scopo. 
+
+
+
+
      
     
 Ora ogno logger.debug/warn/etc avara' un formato tipo:

@@ -7,3 +7,8 @@ Impementa Zipkin server usato da zuul, organization_service e licensing_service 
 
 2)ZipkinServerApplication.java aggiungere @EnableZipkinServer
 
+OSS:  Usa @EnableZipkinStreamServer invece di @EnableZipkinServer per ricevere traces via JMS invece che http!!
+
+
+
+
