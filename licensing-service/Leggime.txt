@@ -45,4 +45,6 @@ Il traceid iniziale e settato da Zuulserver e' propagato a tutti i servizi downs
 Le tracce inviate a zipkin si possono analizzare col browser a http://localhost:9411
 
 
+In caso di JMS messages ricevuti dalla queue "orgChangeTopic.licensingGroup" il trace id e' posto nel message header "spanTraceId:".
+
 
